@@ -1,18 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+
 import './App.css'
-import Header from './component/header'
+import Header from './component/Header'
+import Navbar from "./component/Navbar";
+import HeroSection from "./component/HeroSection";
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
   <div >
     <Header></Header>
+    
+     <Navbar />
+      <HeroSection />
   </div>
   )
 }

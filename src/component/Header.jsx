@@ -2,15 +2,13 @@ import './Header.css';
 
 function Header() {
     return (
-        <div className="bg-black text-white flex justify-between items-center px-4 py-2">
-            <p className="mx-auto">
-                Sign up and get 50% off on your first order
-            </p>
-
-            <button className="ml-4">
-                ✕
-            </button>
-        </div>
+        <div className="bg-black text-white text-center text-sm py-2 flex justify-center items-center relative">
+      <p>
+        Sign up and get 20% off to your first order. 
+        <span className="underline ml-1 cursor-pointer">Sign Up Now</span>
+      </p>
+      <span className="absolute right-4 cursor-pointer">✕</span>
+    </div>
     );
 }
 
