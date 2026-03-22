@@ -2,9 +2,9 @@ import './Header.css';
 
 function HeroSection() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-10 py-10 md:py-16 bg-[#F2F2F2] gap-10">
+    <div><div className="grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-20 py-10 md:py-14 bg-[#F2F2F2] gap-10">
       
-      {/* LEFT CONTENT */}
+    
       <div className="max-w-lg">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
           FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -44,7 +44,17 @@ function HeroSection() {
           className="w-full max-w-sm sm:max-w-md md:max-w-lg h-auto object-contain"
         />
       </div>
-
+    
+    </div>
+    <div className="bg-black text-white py-6">
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-6 md:px-10 text-lg md:text-xl font-semibold tracking-wide gap-6">
+        <h1>VERSACE</h1>
+        <h1>ZARA</h1>
+        <h1>GUCCI</h1>
+        <h1>PRADA</h1>
+        <h1>Calvin Klein</h1>
+      </div>
+    </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useState } from "react";
 function Header() {
   const [show, setShow] = useState(true);
 
-  if (!show) return null; // hide when closed
+  if (!show) return null; 
 
   return (
     <div className="bg-black text-white text-xs sm:text-sm py-2 px-4 flex justify-center items-center relative hover:bg-sky-900 transition duration-500">
@@ -18,10 +18,10 @@ function Header() {
         </a>
       </p>
 
-      {/* CLOSE BUTTON */}
+      
       <button
         onClick={() => setShow(false)}
-        className="absolute right-4 sm:right-10 cursor-pointer"
+        className="absolute right-14 sm:right-10 cursor-pointer"
       >
         <IconX size={18} />
       </button>

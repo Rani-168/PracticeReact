@@ -38,7 +38,7 @@ function Navbar() {
           <input
             type="text"
             placeholder="Search for products..."
-            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-174 outline-none"
+            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-164 outline-none"
           />
 
           {/* Icons */}
@@ -73,6 +73,7 @@ function Navbar() {
             className="bg-gray-200 px-4 py-2 rounded-full outline-none"
           />
         </div>
+
       )}
 
     </div>
