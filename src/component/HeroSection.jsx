@@ -1,7 +1,7 @@
 import './Header.css';
 function HeroSection() {
   return (
-    <div className="flex items-center justify-between px-10 py-16 bg-[#F2F2F2]">
+    <div className="flex items-center justify-between px-10 py-16 bg-blue-600 grid grid-cols-1 sm:bg-[#F2F2F2] sm:grid-cols-2  ">
       
       {/* Left Content */}
       <div className="max-w-lg">
@@ -40,7 +40,8 @@ function HeroSection() {
         <img 
           src="src/assets/image1.png"
           alt="fashion"
-          className="rounded-lg h-120"
+          className="rounded-lg h-120 "
+
         />
       </div>
     </div>

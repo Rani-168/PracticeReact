@@ -1,15 +1,33 @@
 import './Header.css';
+import { IconX } from '@tabler/icons-react';
+import { useState } from "react";
 
 function Header() {
-    return (
-        <div className="bg-black text-white text-center text-sm py-2 flex justify-center items-center relative">
-      <p>
-        Sign up and get 20% off to your first order. 
-        <span className="underline ml-1 cursor-pointer">Sign Up Now</span>
+  const [show, setShow] = useState(true);
+
+  if (!show) return null; // hide when closed
+
+  return (
+    <div className="bg-black text-white text-xs sm:text-sm py-2 px-4 flex justify-center items-center relative hover:bg-sky-900 transition duration-500">
+      
+      {/* TEXT */}
+      <p className="text-center pr-8">
+        Sign up and get 20% off to your first order.
+        <a href="/" className="underline ml-1 cursor-pointer">
+          Sign Up Now
+        </a>
       </p>
-      <span className="absolute right-4 cursor-pointer">✕</span>
+
+      {/* CLOSE BUTTON */}
+      <button
+        onClick={() => setShow(false)}
+        className="absolute right-4 sm:right-10 cursor-pointer"
+      >
+        <IconX size={18} />
+      </button>
+
     </div>
-    );
+  );
 }
 
 export default Header;

@@ -1,31 +1,80 @@
 import './Header.css';
+import { IconChevronDown } from '@tabler/icons-react';
+import { useState } from "react";
+import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
+
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="flex items-center justify-between px-10 py-4 bg-white">
-      
-      {/* Logo */}
-      <h1 className="text-2xl font-bold">SHOP.CO</h1>
+    <div className="bg-gray-100 px-6 py-4">
 
-      {/* Menu */}
-      <ul className="flex gap-6 text-gray-700">
-        <li>Shop</li>
-        <li>On Sale</li>
-        <li>New Arrivals</li>
-        <li>Brands</li>
-      </ul>
+      {/* TOP NAV */}
+      <div className="flex items-center justify-between">
 
-      {/* Search */}
-      <input 
-        type="text"
-        placeholder="Search for products..."
-        className="bg-gray-200 px-4 py-2 rounded-full w-72 outline-none"
-      />
+        {/* LEFT SIDE */}
+        <div className="flex items-center gap-6">
+          
+          {/* Logo */}
+          <a href="/" className="text-2xl font-bold">
+            SHOP.CO
+          </a>
 
-      {/* Icons */}
-      <div className="flex gap-4 text-xl">
-        <span>🛒</span>
-        <span>👤</span>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-8 text-gray-700">
+            <a href="/" className="hover:text-black flex items-center gap-1">
+              Shop <IconChevronDown />
+            </a>
+            <a href="/" className="hover:text-black">On Sale</a>
+            <a href="/" className="hover:text-black">New Arrivals</a>
+            <a href="/" className="hover:text-black">Brands</a>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-4">
+
+          {/* Search (Desktop only) */}
+          <input
+            type="text"
+            placeholder="Search for products..."
+            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-64 outline-none"
+          />
+
+          {/* Icons */}
+          <FaShoppingCart className="text-xl cursor-pointer" />
+          <FaUser className="text-xl cursor-pointer" />
+
+          {/* Hamburger */}
+          <div className="md:hidden text-xl cursor-pointer">
+            {menuOpen ? (
+              <FaTimes onClick={() => setMenuOpen(false)} />
+            ) : (
+              <FaBars onClick={() => setMenuOpen(true)} />
+            )}
+          </div>
+        </div>
       </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="mt-4 flex flex-col gap-4 md:hidden text-gray-700">
+          <a href="/" className="flex items-center gap-1">
+            Shop <IconChevronDown />
+          </a>
+          <a href="/">On Sale</a>
+          <a href="/">New Arrivals</a>
+          <a href="/">Brands</a>
+
+          {/* Mobile Search */}
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-gray-200 px-4 py-2 rounded-full outline-none"
+          />
+        </div>
+      )}
+
     </div>
   );
 }
