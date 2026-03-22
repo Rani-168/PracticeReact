@@ -7,13 +7,13 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-100 px-6 py-4">
+    <div className="bg-white px-20 py-4">
 
       {/* TOP NAV */}
       <div className="flex items-center justify-between">
 
         {/* LEFT SIDE */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-10">
           
           {/* Logo */}
           <a href="/" className="text-2xl font-bold">
@@ -32,13 +32,13 @@ function Navbar() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-14">
 
           {/* Search (Desktop only) */}
           <input
             type="text"
             placeholder="Search for products..."
-            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-64 outline-none"
+            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-174 outline-none"
           />
 
           {/* Icons */}
@@ -58,7 +58,7 @@ function Navbar() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="mt-4 flex flex-col gap-4 md:hidden text-gray-700">
+        <div className="mt-4 flex flex-col gap-2 md:hidden text-gray-700">
           <a href="/" className="flex items-center gap-1">
             Shop <IconChevronDown />
           </a>
