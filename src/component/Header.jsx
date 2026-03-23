@@ -31,3 +31,5 @@ function Header() {
 }
 
 export default Header;
+// for new page we use react-router-dom labbery download
+// use hock for useParams

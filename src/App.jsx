@@ -7,6 +7,8 @@ import ProductSection from "./component/ProductSection";
 
 
 
+
+
 function App() {
   const newArrivals = [
     {
@@ -78,6 +80,7 @@ return (
     
     <ProductSection title="NEW ARRIVALS" products={newArrivals} />
     <ProductSection title="TOP SELLING" products={topSelling} />
+  
   </div>
 );
   
