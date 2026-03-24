@@ -6,36 +6,60 @@ function Product({ cart, setCart }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
+  const [mainImg, setMainImg] = useState("");
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/newArrivals/${id}`)
-      .then(res => res.json())
-      .then(data => setProduct(data));
-  }, [id]);
-
+useEffect(() => {
+  fetch(`http://localhost:3000/newArrivals/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      setProduct(data);
+      setMainImg(data.img);
+    });
+}, [id]);
   if (!product) return <h2 className="text-center mt-10">Loading...</h2>;
 
   return (
     <div className="p-10 bg-gray-50 min-h-screen">
 
       <div className="grid grid-cols-2 gap-10 bg-white p-8 rounded-xl">
+<div className="flex gap-4">
 
-        <div className="flex gap-4">
-          
-          
-          <div className="flex flex-col gap-3">
-            <img src={product.img} className="w-20 h-20 rounded-lg border" />
-            <img src={product.imgBack} className="w-20 h-20 rounded-lg border" />
-            <img src={product.imgfront} className="w-20 h-20 rounded-lg border" />
-          </div>
+  {/* Thumbnails */}
+  <div className="flex flex-col gap-3">
+    
+    <img
+      src={product.img}
+      onClick={() => setMainImg(product.img)}
+      className="w-20 h-20 rounded-lg border cursor-pointer"
+    />
 
-         
-          <img
-            src={product.img}
-            alt={product.title}
-            className="w-96 rounded-xl object-contain bg-gray-100 p-4"
-          />
-        </div>
+    {product.imgBack && (
+      <img
+        src={product.imgBack}
+        onClick={() => setMainImg(product.imgBack)}
+        className="w-20 h-20 rounded-lg border cursor-pointer"
+      />
+    )}
+
+    {product.imgfront && (
+      <img
+        src={product.imgfront}
+        onClick={() => setMainImg(product.imgfront)}
+        className="w-20 h-20 rounded-lg border cursor-pointer"
+      />
+    )}
+
+  </div>
+
+  {/* Main Image */}
+  <img
+    src={mainImg}
+    alt={product.title}
+    className="w-96 rounded-xl object-contain bg-gray-100 p-4"
+  />
+
+</div>
+
 
         
         <div>
