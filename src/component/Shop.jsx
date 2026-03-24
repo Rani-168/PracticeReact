@@ -28,10 +28,11 @@ const category = queryParams.get("category");
 
         <p className="font-semibold">Category</p>
         <ul className="text-gray-600 text-sm mt-2 space-y-1">
-          <li>T-shirts</li>
-          <li>Shirts</li>
-          <li>Jeans</li>
-        </ul>
+  <li><Link to="/shop">All</Link></li>
+  <li><Link to="/shop?category=t-shirts">T-shirts</Link></li>
+  <li><Link to="/shop?category=shirts">Shirts</Link></li>
+  <li><Link to="/shop?category=jeans">Jeans</Link></li>
+</ul>
 
         <button className="w-full mt-4 bg-black text-white py-2 rounded-full">
           Apply Filter
@@ -41,57 +42,67 @@ const category = queryParams.get("category");
       
       <div className="w-3/4">
 
-        <h1 className="text-2xl font-bold mb-6">Casual</h1>
+  <h1 className="text-2xl font-bold mb-6">Casual</h1>
 
-        <div className="grid grid-cols-3 gap-6">
-  {products
-  .filter((item) => {
-    // if no category selected → show all
-    if (!category) return true;
+  {/* 🔍 Search Bar */}
+  <input
+    type="text"
+    placeholder="Search products..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="w-full mb-5 p-2 border rounded-lg"
+  />
 
-    // match category
-    return item.category?.toLowerCase() === category.toLowerCase();
-  })
+  <div className="grid grid-cols-3 gap-6">
+    {products
+      .filter((item) => {
+        // Category filter
+        if (category && item.category?.toLowerCase() !== category.toLowerCase()) {
+          return false;
+        }
 
-    .map((item) => (
-      
-      <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm">
+        // Search filter
+        return item.title.toLowerCase().includes(search.toLowerCase());
+      })
 
-        <Link to={`/product/${item.id}`}>
-          <img
-            src={item.img}
-            alt={item.title}
-            className="w-full h-48 object-contain"
-          />
-        </Link>
+      .map((item) => (
+        <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm">
 
-        <h3 className="mt-2 font-semibold">{item.title}</h3>
+          <Link to={`/product/${item.id}`}>
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-48 object-contain"
+            />
+          </Link>
 
-        <p className="text-yellow-500 text-sm">⭐ {item.rating}</p>
+          <h3 className="mt-2 font-semibold">{item.title}</h3>
 
-        <div className="flex gap-2 mt-1">
-          <p className="font-bold">₹{item.price}</p>
+          <p className="text-yellow-500 text-sm">⭐ {item.rating}</p>
 
-          {item.oldPrice && (
-            <p className="line-through text-gray-400">
-              ₹{item.oldPrice}
-            </p>
+          <div className="flex gap-2 mt-1">
+            <p className="font-bold">₹{item.price}</p>
+
+            {item.oldPrice && (
+              <p className="line-through text-gray-400">
+                ₹{item.oldPrice}
+              </p>
+            )}
+          </div>
+
+          {item.discount && (
+            <span className="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full">
+              {item.discount}
+            </span>
           )}
         </div>
-
-        {item.discount && (
-          <span className="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full">
-            {item.discount}
-          </span>
-        )}
-
-      </div>
-  ))}
+      ))}
+  </div>
 </div>
 
          
        
-      </div>
+    
     </div>
   );
 }

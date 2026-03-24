@@ -6,17 +6,20 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import Product from "./component/Product";
 import Shop from "./component/Shop";
+import { useState } from "react";
+import Cart from "./component/Cart";
 
 function App() {
-
+const [cart, setCart] = useState([]);
 return (
   <div>
     <Header />
-    <Navbar />
+     <Navbar cartCount={cart.length} />
         <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/product/:id" element={<Product />} />
-      <Route path="/Shop" element={<Shop />} />
+      <Route path="/shop" element={<Shop />} />
+       <Route path="/product/:id" element={<Product cart={cart} setCart={setCart} />} />
+   
     </Routes>
   </div>
 );  

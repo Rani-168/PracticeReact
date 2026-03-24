@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
-function Product() {
+function Product({ cart, setCart }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     fetch(`http://localhost:3000/newArrivals/${id}`)
@@ -32,7 +33,7 @@ function Product() {
           <img
             src={product.img}
             alt={product.title}
-            className="w-96 rounded-xl object-cover"
+            className="w-96 rounded-xl object-contain bg-gray-100 p-4"
           />
         </div>
 
@@ -91,15 +92,31 @@ function Product() {
 
           
           <div className="flex items-center gap-4 mt-8">
-            <div className="flex items-center border rounded-full px-4 py-2 gap-4">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
-
-            <button className="bg-black text-white px-10 py-3 rounded-full">
-              Add to Cart
-            </button>
+          <div className="flex items-center border rounded-full px-4 py-2 gap-4">
+  <button onClick={() => qty > 1 && setQty(qty - 1)}>-</button>
+  <span>{qty}</span>
+  <button onClick={() => setQty(qty + 1)}>+</button>
+</div>
+<button
+  className="bg-black text-white px-10 py-3 rounded-full"
+ onClick={() => {
+  const exist = cart.find((item) => item.id === product.id);
+ 
+  if (exist) {
+    setCart(
+      cart.map((item) =>
+        item.id === product.id
+          ? { ...item, qty: item.qty + qty }
+          : item
+      )
+    );
+  } else {
+    setCart([...cart, { ...product, qty }]);
+  }
+}}
+>
+  Add to Cart
+</button>
           </div>
 
         </div>

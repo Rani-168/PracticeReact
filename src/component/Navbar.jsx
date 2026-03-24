@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ cartCount }) {
   const [menuOpen, setMenuOpen] = useState(false);
 const [showDropdown, setShowDropdown] = useState(false);
   return (
@@ -57,7 +57,15 @@ const [showDropdown, setShowDropdown] = useState(false);
           />
 
           
-          <FaShoppingCart className="text-xl cursor-pointer" />
+          <Link to="/cart" className="relative">
+  <FaShoppingCart className="text-xl cursor-pointer" />
+
+  {cartCount > 0 && (
+    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">
+      {cartCount}
+    </span>
+  )}
+</Link>
           <FaUser className="text-xl cursor-pointer" />
 
          
@@ -88,8 +96,10 @@ const [showDropdown, setShowDropdown] = useState(false);
             className="bg-gray-200 px-4 py-2 rounded-full outline-none"
           />
         </div>
+        
 
       )}
+    
 
     </div>
   );
