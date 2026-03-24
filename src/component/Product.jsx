@@ -24,7 +24,7 @@ useEffect(() => {
       <div className="grid grid-cols-2 gap-10 bg-white p-8 rounded-xl">
 <div className="flex gap-4">
 
-  {/* Thumbnails */}
+ 
   <div className="flex flex-col gap-3">
     
     <img
@@ -51,17 +51,13 @@ useEffect(() => {
 
   </div>
 
-  {/* Main Image */}
   <img
     src={mainImg}
     alt={product.title}
     className="w-96 rounded-xl object-contain bg-gray-100 p-4"
   />
 
-</div>
-
-
-        
+</div>        
         <div>
 
           <h1 className="text-3xl font-bold">{product.title}</h1>

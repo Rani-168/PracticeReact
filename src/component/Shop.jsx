@@ -99,10 +99,7 @@ const category = queryParams.get("category");
       ))}
   </div>
 </div>
-
-         
-       
-    
+  
     </div>
   );
 }
