@@ -9,8 +9,7 @@ function Header() {
 
   return (
     <div className="bg-black text-white text-xs sm:text-sm py-2 px-4 flex justify-center items-center relative hover:bg-sky-900 transition duration-500">
-      
-      {/* TEXT */}
+     
       <p className="text-center pr-8">
         Sign up and get 20% off to your first order.
         <a href="/" className="underline ml-1 cursor-pointer">

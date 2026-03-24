@@ -2,50 +2,65 @@ import './Header.css';
 import { IconChevronDown } from '@tabler/icons-react';
 import { useState } from "react";
 import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="bg-white px-20 py-4">
 
-      {/* TOP NAV */}
+      
       <div className="flex items-center justify-between">
 
-        {/* LEFT SIDE */}
+       
         <div className="flex items-center gap-10">
           
-          {/* Logo */}
+         
           <a href="/" className="text-2xl font-bold">
             SHOP.CO
           </a>
 
-          {/* Desktop Menu */}
+          
           <div className="hidden md:flex gap-8 text-gray-700">
-            <a href="/" className="hover:text-black flex items-center gap-1">
-              Shop <IconChevronDown />
-            </a>
+           <div 
+  className="relative"
+  onClick={() => setShowDropdown(!showDropdown)}
+>
+  <div className="flex items-center gap-1 cursor-pointer">
+    Shop <IconChevronDown />
+  </div>
+
+  {showDropdown && (
+    <div className="absolute top-8 left-0 bg-white shadow-lg rounded-lg p-4 w-40">
+  <Link to="/shop?category=tshirts" className="block p-2 hover:bg-gray-100">T-Shirts</Link>
+  <Link to="/shop?category=shirts" className="block p-2 hover:bg-gray-100">Shirts</Link>
+  <Link to="/shop?category=jeans" className="block p-2 hover:bg-gray-100">Jeans</Link>
+  <Link to="/shop?category=dresses" className="block p-2 hover:bg-gray-100">Dresses</Link>
+</div>
+  )}
+</div>
             <a href="/" className="hover:text-black">On Sale</a>
             <a href="/" className="hover:text-black">New Arrivals</a>
             <a href="/" className="hover:text-black">Brands</a>
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
+       
         <div className="flex items-center gap-14">
 
-          {/* Search (Desktop only) */}
+          
           <input
             type="text"
             placeholder="Search for products..."
             className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-164 outline-none"
           />
 
-          {/* Icons */}
+          
           <FaShoppingCart className="text-xl cursor-pointer" />
           <FaUser className="text-xl cursor-pointer" />
 
-          {/* Hamburger */}
+         
           <div className="md:hidden text-xl cursor-pointer">
             {menuOpen ? (
               <FaTimes onClick={() => setMenuOpen(false)} />
@@ -56,7 +71,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      
       {menuOpen && (
         <div className="mt-4 flex flex-col gap-2 md:hidden text-gray-700">
           <a href="/" className="flex items-center gap-1">
@@ -66,7 +81,7 @@ function Navbar() {
           <a href="/">New Arrivals</a>
           <a href="/">Brands</a>
 
-          {/* Mobile Search */}
+          
           <input
             type="text"
             placeholder="Search..."

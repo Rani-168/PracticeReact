@@ -1,4 +1,5 @@
 import './Header.css';
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -14,12 +15,14 @@ function HeroSection() {
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality.
         </p>
+        <br />
+        <Link to="/shop">
+  <button className="bg-black text-white px-6 py-3 rounded-full">
+    Shop Now
+  </button>
+</Link>
 
-        <button className="mt-6 bg-black text-white px-6 py-3 rounded-full w-full sm:w-auto">
-          Shop Now
-        </button>
-
-        {/* STATS */}
+        
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 mt-10">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold">200+</h2>
@@ -36,7 +39,7 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* RIGHT IMAGE */}
+     
       <div className="flex justify-center">
         <img 
           src="src/assets/image1.png"

@@ -7,7 +7,9 @@
       "imgfront":"src/assets/img1.2.png",
       "title": "T-shirt with Tape Details",
       "price": 120,
-      "rating": 4.5
+      "rating": 4.5,
+      "oldPrice": 260,
+       "discount": "-20%"
     },
     {
       "id": 2,
