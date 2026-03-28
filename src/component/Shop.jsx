@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function Shop() {
+function Shop({ cart, setCart }) {
   const [products, setProducts] = useState([]);
 const [search, setSearch] = useState("");
 const location = useLocation();
@@ -82,6 +82,24 @@ const category = queryParams.get("category");
 
           <div className="flex gap-2 mt-1">
             <p className="font-bold">₹{item.price}</p>
+              <button
+        className="mt-3 w-full bg-black text-white py-1 rounded-full"
+        onClick={() => {
+          const exists = cart.find(i => i.id === item.id);
+
+          if (exists) {
+            setCart(cart.map(i =>
+              i.id === item.id
+                ? { ...i, qty: i.qty + 1 }
+                : i
+            ));
+          } else {
+            setCart([...cart, { ...item, qty: 1 }]);
+          }
+        }}
+      >
+        Add to Cart
+      </button>
 
             {item.oldPrice && (
               <p className="line-through text-gray-400">
@@ -99,19 +117,7 @@ const category = queryParams.get("category");
       ))}
   </div>
 </div>
-  <button onClick={() => {
-const exists = cart.find(i => i.id === product.id);
 
-  if (exists) {
-    setCart(cart.map(i =>
-      i.id === item.id ? { ...i, qty: i.qty + 1 } : i
-    ));
-  } else {
-    setCart([...cart, { ...item, qty: 1 }]);
-  }
-}}>
-  Add to Cart
-</button>
     </div>
   );
 }

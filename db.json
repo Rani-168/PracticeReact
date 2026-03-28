@@ -3,7 +3,7 @@
     {
       "id": 1,
       "img": "src/assets/img1.png",
-      "imgBack":"src/assets/img1.1.png",
+      "imgBack":"/assets/img11.png",
       "imgfront":"src/assets/img1.2.png",
       "title": "T-shirt with Tape Details",
       "price": 120,
@@ -16,7 +16,7 @@
     {
       "id": 2,
       "img": "src/assets/img2.png",
-      "imgBack": "" ,
+      "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Skinny Fit Jeans",
       "price": 240,
@@ -29,7 +29,7 @@
     {
       "id": 3,
       "img": "src/assets/img3.png",
-      "imgBack": "" ,
+      "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Checkered Shirt",
       "price": 180,
@@ -39,7 +39,7 @@
     {
       "id": 4,
       "img": "src/assets/img4.png",
-      "imgBack": "" ,
+      "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Sleeve Striped T-shirt",
       "price": 130,
@@ -51,7 +51,7 @@
     {
       "id": 5,
       "img": "src/assets/img5.png",
-      "imgBack": "" ,
+      "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Vertical Striped Shirt",
       "price": 212,
@@ -63,7 +63,7 @@
     {
       "id": 6,
       "img": "src/assets/img6.png",
-      "imgBack": "" ,
+      "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Courage Graphic T-shirt",
       "price": 145,

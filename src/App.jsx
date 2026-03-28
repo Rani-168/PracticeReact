@@ -19,6 +19,8 @@ return (
       <Route path="/" element={<Home />} />
       <Route path="/shop" element={<Shop />} />
        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+       <Route path="/product/:id" element={<Product cart={cart} setCart={setCart} />} />
+       <Route path="/shop" element={<Shop cart={cart} setCart={setCart} />} />
    
     </Routes>
   </div>
