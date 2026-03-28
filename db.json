@@ -2,9 +2,9 @@
   "newArrivals": [
     {
       "id": 1,
-      "img": "src/assets/img1.png",
+      "img": "/assets/img1.png",
       "imgBack":"/assets/img11.png",
-      "imgfront":"src/assets/img1.2.png",
+      "imgfront":"/assets/img12.png",
       "title": "T-shirt with Tape Details",
       "price": 120,
       "rating": 4.5,
@@ -15,7 +15,7 @@
 
     {
       "id": 2,
-      "img": "src/assets/img2.png",
+      "img": "/assets/img2.png",
       "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Skinny Fit Jeans",
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "img": "src/assets/img3.png",
+      "img": "/assets/img3.png",
       "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Checkered Shirt",
@@ -38,7 +38,7 @@
     },
     {
       "id": 4,
-      "img": "src/assets/img4.png",
+      "img": "/assets/img4.png",
       "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Sleeve Striped T-shirt",
@@ -50,7 +50,7 @@
     },
     {
       "id": 5,
-      "img": "src/assets/img5.png",
+      "img": "/assets/img5.png",
       "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Vertical Striped Shirt",
@@ -62,7 +62,7 @@
     },
     {
       "id": 6,
-      "img": "src/assets/img6.png",
+      "img": "/assets/img6.png",
       "imgBack": "/assets/img11.png" ,
       "imgfront": "",
       "title": "Courage Graphic T-shirt",
@@ -72,7 +72,7 @@
     },
     {
       "id": 7,
-      "img": "src/assets/img7.png",
+      "img": "/assets/img7.png",
       "imgBack": "" ,
       "imgfront": "",
       "title": "Loose Fit Bermuda Shorts",
@@ -82,7 +82,7 @@
     },
     {
       "id": 8,
-      "img": "src/assets/img8.png",
+      "img": "/assets/img8.png",
       "imgBack": "" ,
       "imgfront": "",  
       "title": "Faded Skinny Jeans",
