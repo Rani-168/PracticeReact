@@ -99,7 +99,19 @@ const category = queryParams.get("category");
       ))}
   </div>
 </div>
-  
+  <button onClick={() => {
+  const exists = cart.find(i => i.id === item.id);
+
+  if (exists) {
+    setCart(cart.map(i =>
+      i.id === item.id ? { ...i, qty: i.qty + 1 } : i
+    ));
+  } else {
+    setCart([...cart, { ...item, qty: 1 }]);
+  }
+}}>
+  Add to Cart
+</button>
     </div>
   );
 }

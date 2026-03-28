@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+
+
 function Navbar({ cartCount }) {
   const [menuOpen, setMenuOpen] = useState(false);
 const [showDropdown, setShowDropdown] = useState(false);

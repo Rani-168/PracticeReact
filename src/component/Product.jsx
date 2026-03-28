@@ -117,24 +117,17 @@ useEffect(() => {
   <span>{qty}</span>
   <button onClick={() => setQty(qty + 1)}>+</button>
 </div>
-<button
-  className="bg-black text-white px-10 py-3 rounded-full"
- onClick={() => {
-  const exist = cart.find((item) => item.id === product.id);
- 
-  if (exist) {
-    setCart(
-      cart.map((item) =>
-        item.id === product.id
-          ? { ...item, qty: item.qty + qty }
-          : item
-      )
-    );
+<button onClick={() => {
+  const exists = cart.find(i => i.id === item.id);
+
+  if (exists) {
+    setCart(cart.map(i =>
+      i.id === item.id ? { ...i, qty: i.qty + 1 } : i
+    ));
   } else {
-    setCart([...cart, { ...product, qty }]);
+    setCart([...cart, { ...item, qty: 1 }]);
   }
-}}
->
+}}>
   Add to Cart
 </button>
           </div>
