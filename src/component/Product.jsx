@@ -6,7 +6,7 @@ function Product({ cart, setCart }) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
-  const [mainImg, setMainImg] = useState("");
+  const [mainImg, setMainImg] = useState(null);
 
 useEffect(() => {
   fetch(`http://localhost:3000/newArrivals/${id}`)
@@ -117,17 +117,22 @@ useEffect(() => {
   <span>{qty}</span>
   <button onClick={() => setQty(qty + 1)}>+</button>
 </div>
-<button onClick={() => {
-  const exists = cart.find(i => i.id === item.id);
+<button
+  className="bg-black text-white px-6 py-2 rounded-full"
+  onClick={() => {
+    const exists = cart.find(i => i.id === product.id);
 
-  if (exists) {
-    setCart(cart.map(i =>
-      i.id === item.id ? { ...i, qty: i.qty + 1 } : i
-    ));
-  } else {
-    setCart([...cart, { ...item, qty: 1 }]);
-  }
-}}>
+    if (exists) {
+      setCart(cart.map(i =>
+        i.id === product.id
+          ? { ...i, qty: i.qty + qty }
+          : i
+      ));
+    } else {
+      setCart([...cart, { ...product, qty }]);
+    }
+  }}
+>
   Add to Cart
 </button>
           </div>
