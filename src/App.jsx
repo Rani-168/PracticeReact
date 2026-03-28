@@ -2,6 +2,7 @@
 import './App.css'
 import Header from './component/Header'
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer"
 import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import Product from "./component/Product";
@@ -15,6 +16,7 @@ return (
   <div>
     <Header />
      <Navbar cartCount={cart.length} />
+     
         <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/shop" element={<Shop />} />
@@ -23,6 +25,7 @@ return (
        <Route path="/shop" element={<Shop cart={cart} setCart={setCart} />} />
    
     </Routes>
+    <Footer />
   </div>
 );  
 }

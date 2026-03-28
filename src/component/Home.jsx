@@ -1,5 +1,6 @@
 import ProductSection from "./ProductSection";
 import HeroSection from "./HeroSection";
+import Testimonials from "./Testimonials";
 
 function Home() {
   return (
@@ -7,6 +8,7 @@ function Home() {
       
       <HeroSection />
       <ProductSection />
+       <Testimonials />
     </div>
   );
 }

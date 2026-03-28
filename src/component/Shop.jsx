@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Testimonials from "./Testimonials";
+
 
 function Shop({ cart, setCart }) {
   const [products, setProducts] = useState([]);
@@ -20,7 +22,8 @@ const category = queryParams.get("category");
   }
 
   return (
-    <div className="flex px-10 py-6 gap-8 bg-gray-50">
+    <div>
+      <div className="flex px-10 py-6 gap-8 bg-gray-50">
 
     
       <div className="w-1/4 bg-white p-5 rounded-xl shadow-sm">
@@ -118,6 +121,8 @@ const category = queryParams.get("category");
   </div>
 </div>
 
+    </div>
+     <div><Testimonials /></div>
     </div>
   );
 }

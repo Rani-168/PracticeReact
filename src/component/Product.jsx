@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Testimonials from "./Testimonials";
+
 
 
 function Product({ cart, setCart }) {
@@ -138,6 +140,9 @@ useEffect(() => {
           </div>
 
         </div>
+      </div>
+      <div>
+         <Testimonials />
       </div>
     </div>
   );
