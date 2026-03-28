@@ -52,10 +52,10 @@ useEffect(() => {
   </div>
 
   <img
-    src={mainImg}
-    alt={product.title}
-    className="w-96 rounded-xl object-contain bg-gray-100 p-4"
-  />
+  src={mainImg || product.img}
+  alt={product.title}
+  className="w-96 rounded-xl object-contain bg-gray-100 p-4"
+/>
 
 </div>        
         <div>
