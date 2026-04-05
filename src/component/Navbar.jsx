@@ -10,7 +10,7 @@ function Navbar({ cartCount }) {
   const [menuOpen, setMenuOpen] = useState(false);
 const [showDropdown, setShowDropdown] = useState(false);
   return (
-    <div className="bg-white px-20 py-4">
+    <div className="bg-white px-20 py-4 sticky top-0 z-50 shadow-md navbar">
 
       
       <div className="flex items-center justify-between">
@@ -19,14 +19,14 @@ const [showDropdown, setShowDropdown] = useState(false);
         <div className="flex items-center gap-10">
           
          
-          <a href="/" className="text-2xl font-bold">
+          <Link to="/" className="text-2xl font-bold">
             SHOP.CO
-          </a>
+          </Link>
 
           
           <div className="hidden md:flex gap-8 text-gray-700">
            <div 
-  className="relative"
+  className="relative dropdown"
   onClick={() => setShowDropdown(!showDropdown)}
 >
   <div className="flex items-center gap-1 cursor-pointer">
@@ -34,7 +34,7 @@ const [showDropdown, setShowDropdown] = useState(false);
   </div>
 
   {showDropdown && (
-    <div className="absolute top-8 left-0 bg-white shadow-lg rounded-lg p-4 w-40">
+    <div className="absolute top-8 left-0 bg-white shadow-lg rounded-lg p-4 w-40 dropdown-content">
   <Link to="/shop?category=tshirts" className="block p-2 hover:bg-gray-100">T-Shirts</Link>
   <Link to="/shop?category=shirts" className="block p-2 hover:bg-gray-100">Shirts</Link>
   <Link to="/shop?category=jeans" className="block p-2 hover:bg-gray-100">Jeans</Link>
@@ -55,7 +55,7 @@ const [showDropdown, setShowDropdown] = useState(false);
           <input
             type="text"
             placeholder="Search for products..."
-            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-164 outline-none"
+            className="hidden md:block bg-gray-200 px-4 py-2 rounded-full w-64 outline-none"
           />
 
           
@@ -86,7 +86,7 @@ const [showDropdown, setShowDropdown] = useState(false);
 
       
       {menuOpen && (
-        <div className="mt-4 flex flex-col gap-2 md:hidden text-gray-700">
+        <div className="mt-4 flex flex-col gap-2 md:hidden text-gray-700 mobile-menu">
           <a href="/" className="flex items-center gap-1">
             Shop <IconChevronDown />
           </a>

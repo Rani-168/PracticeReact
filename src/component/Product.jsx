@@ -14,10 +14,19 @@ function Product({ cart, setCart }) {
 
 useEffect(() => {
   fetch(`http://localhost:3000/newArrivals/${id}`)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Product not found');
+      }
+      return res.json();
+    })
     .then(data => {
       setProduct(data);
       setMainImg(data.img);
+    })
+    .catch(err => {
+      console.error(err);
+      setProduct({}); // set to empty object to avoid null
     });
 
   const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -35,6 +44,8 @@ useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
 
+  if (!product || !product.id) return <h2 className="text-center mt-10">Loading...</h2>;
+
   return (
     <div className="p-10 bg-gray-50 min-h-screen">
 
@@ -44,11 +55,13 @@ useEffect(() => {
  
   <div className="flex flex-col gap-3">
     
-    <img
-      src={product.img}
-      onClick={() => setMainImg(product.img)}
-      className="w-20 h-20 rounded-lg border cursor-pointer"
-    />
+    {product.img && (
+      <img
+        src={product.img}
+        onClick={() => setMainImg(product.img)}
+        className="w-20 h-20 rounded-lg border cursor-pointer"
+      />
+    )}
 
     {product.imgBack && (
       <img
@@ -69,7 +82,7 @@ useEffect(() => {
   </div>
 
   <img
-  src={mainImg || product.img}
+  src={mainImg || product.img || '/assets/placeholder.png'}
   alt={product.title}
   className="w-96 rounded-xl object-contain bg-gray-100 p-4"
 />

@@ -42,7 +42,7 @@ function HeroSection() {
      
       <div className="flex justify-center">
         <img 
-          src="src/assets/image1.png"
+          src="/assets/image1.png"
           alt="fashion"
           className="w-full max-w-sm sm:max-w-md md:max-w-lg h-auto object-contain"
         />
