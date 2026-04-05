@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Testimonials from "./Testimonials";
+import { FaHeart } from "react-icons/fa";
 
 
 
@@ -9,6 +10,7 @@ function Product({ cart, setCart }) {
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
   const [mainImg, setMainImg] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
 
 useEffect(() => {
   fetch(`http://localhost:3000/newArrivals/${id}`)
@@ -17,8 +19,21 @@ useEffect(() => {
       setProduct(data);
       setMainImg(data.img);
     });
+
+  const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  setWishlist(savedWishlist);
 }, [id]);
-  if (!product) return <h2 className="text-center mt-10">Loading...</h2>;
+  const toggleWishlist = (item) => {
+    const isInWishlist = wishlist.find(w => w.id === item.id);
+    let updated;
+    if (isInWishlist) {
+      updated = wishlist.filter(w => w.id !== item.id);
+    } else {
+      updated = [...wishlist, item];
+    }
+    setWishlist(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
 
   return (
     <div className="p-10 bg-gray-50 min-h-screen">
@@ -62,7 +77,13 @@ useEffect(() => {
 </div>        
         <div>
 
-          <h1 className="text-3xl font-bold">{product.title}</h1>
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold">{product.title}</h1>
+            <FaHeart
+              className={`text-2xl cursor-pointer ${wishlist.find(w => w.id === product.id) ? 'text-red-500' : 'text-gray-400'}`}
+              onClick={() => toggleWishlist(product)}
+            />
+          </div>
 
          
           <p className="text-yellow-500 mt-2">
@@ -141,6 +162,22 @@ useEffect(() => {
 
         </div>
       </div>
+
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">Reviews</h2>
+        {product.reviews && product.reviews.length > 0 ? (
+          product.reviews.map((review, index) => (
+            <div key={index} className="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <p className="font-semibold">{review.user}</p>
+              <p className="text-yellow-500">⭐ {review.rating}</p>
+              <p>{review.comment}</p>
+            </div>
+          ))
+        ) : (
+          <p>No reviews yet.</p>
+        )}
+      </div>
+
       <div>
          <Testimonials />
       </div>

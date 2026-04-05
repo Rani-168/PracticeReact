@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Testimonials from "./Testimonials";
+import { FaHeart } from "react-icons/fa";
 
 
 function Shop({ cart, setCart }) {
   const [products, setProducts] = useState([]);
 const [search, setSearch] = useState("");
+const [minPrice, setMinPrice] = useState("");
+const [maxPrice, setMaxPrice] = useState("");
+const [wishlist, setWishlist] = useState([]);
 const location = useLocation();
 const queryParams = new URLSearchParams(location.search);
 const category = queryParams.get("category");
@@ -14,12 +18,23 @@ const category = queryParams.get("category");
     fetch("http://localhost:3000/newArrivals")
       .then(res => res.json())
       .then(data => setProducts(data));
+
+    const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(savedWishlist);
   }, []);
 
  
-  if (!products.length) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
+  const toggleWishlist = (item) => {
+    const isInWishlist = wishlist.find(w => w.id === item.id);
+    let updated;
+    if (isInWishlist) {
+      updated = wishlist.filter(w => w.id !== item.id);
+    } else {
+      updated = [...wishlist, item];
+    }
+    setWishlist(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
 
   return (
     <div>
@@ -36,7 +51,23 @@ const category = queryParams.get("category");
   <li><Link to="/shop?category=shirts">Shirts</Link></li>
   <li><Link to="/shop?category=jeans">Jeans</Link></li>
 </ul>
-
+        <p className="font-semibold mt-4">Price Range</p>
+        <div className="mt-2 space-y-2">
+          <input
+            type="number"
+            placeholder="Min Price"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+            className="w-full p-2 border rounded"
+          />
+          <input
+            type="number"
+            placeholder="Max Price"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+            className="w-full p-2 border rounded"
+          />
+        </div>
         <button className="w-full mt-4 bg-black text-white py-2 rounded-full">
           Apply Filter
         </button>
@@ -65,19 +96,37 @@ const category = queryParams.get("category");
         }
 
         // Search filter
-        return item.title.toLowerCase().includes(search.toLowerCase());
+        if (!item.title.toLowerCase().includes(search.toLowerCase())) {
+          return false;
+        }
+
+        // Price filter
+        if (minPrice && item.price < parseFloat(minPrice)) {
+          return false;
+        }
+        if (maxPrice && item.price > parseFloat(maxPrice)) {
+          return false;
+        }
+
+        return true;
       })
 
       .map((item) => (
         <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm">
 
-          <Link to={`/product/${item.id}`}>
-            <img
-              src={item.img}
-              alt={item.title}
-              className="w-full h-48 object-contain"
+          <div className="relative">
+            <Link to={`/product/${item.id}`}>
+              <img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-48 object-contain"
+              />
+            </Link>
+            <FaHeart
+              className={`absolute top-2 right-2 text-xl cursor-pointer ${wishlist.find(w => w.id === item.id) ? 'text-red-500' : 'text-gray-400'}`}
+              onClick={() => toggleWishlist(item)}
             />
-          </Link>
+          </div>
 
           <h3 className="mt-2 font-semibold">{item.title}</h3>
 

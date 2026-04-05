@@ -10,7 +10,11 @@
       "rating": 4.5,
       "oldPrice": 260,
       "discount": "-20%",
-      "category": "t-shirts"
+      "category": "t-shirts",
+      "reviews": [
+        {"user": "Alice", "rating": 5, "comment": "Great quality!"},
+        {"user": "Bob", "rating": 4, "comment": "Good fit."}
+      ]
     },
 
     {
@@ -23,8 +27,10 @@
       "oldPrice": 260,
       "rating": 3.5,
       "discount": "-20%",
-      "category": "Jeans"
-
+      "category": "Jeans",
+      "reviews": [
+        {"user": "Charlie", "rating": 4, "comment": "Comfortable fit."}
+      ]
     },
     {
       "id": 3,

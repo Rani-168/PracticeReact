@@ -1,7 +1,7 @@
 import './Header.css';
 import { IconChevronDown } from '@tabler/icons-react';
 import { useState } from "react";
-import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
+import { FaShoppingCart, FaUser, FaBars, FaTimes, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
@@ -68,6 +68,9 @@ const [showDropdown, setShowDropdown] = useState(false);
     </span>
   )}
 </Link>
+          <Link to="/wishlist">
+            <FaHeart className="text-xl cursor-pointer" />
+          </Link>
           <FaUser className="text-xl cursor-pointer" />
 
          

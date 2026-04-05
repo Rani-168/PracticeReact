@@ -9,6 +9,7 @@ import Product from "./component/Product";
 import Shop from "./component/Shop";
 import { useState } from "react";
 import Cart from "./component/Cart";
+import Wishlist from "./component/Wishlist";
 
 function App() {
 const [cart, setCart] = useState([]);
@@ -23,6 +24,7 @@ return (
        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
        <Route path="/product/:id" element={<Product cart={cart} setCart={setCart} />} />
        <Route path="/shop" element={<Shop cart={cart} setCart={setCart} />} />
+       <Route path="/wishlist" element={<Wishlist cart={cart} setCart={setCart} />} />
    
     </Routes>
     <Footer />
